@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="./js/jquery.js"></script>
+</head>
+
+<body>
+    <div class="tr1">
+
+    </div>
+    <button class="btn">点击</button>
+    <script>
+        function showData(result) {
+            console.log("djj:", result)
+            // var data = JSON.stringify(result); //json对象转成字符串
+            // var name = result.pois[0].name
+            if(result.pois.length==0){
+                var location = null
+            }else{
+                var location = result.pois[0].location
+            }
+            $("div").append(location+';')
+        }
+        var arr = []
+        var key = 'ed75a49e22ac226a69e3f554ea818fde';
+        $.ajax({
+            url: '/shell',
+            type: 'get',
+            success: (data) => {
+                console.log(data)
+                arr = data
+                $('.btn').click(function () {
+                    for (let i = 0; i < arr.length; i++) {
+                        var keywords = arr[i]
+                        $("head").append(
+                            `<script src='https://restapi.amap.com/v3/place/text?key=ed75a49e22ac226a69e3f554ea818fde&keywords=${keywords}&city=嘉祥&children=1&offset=20&page=1&extensions=all&callback=showData'>< \/script>`
+                        );
+                    }
+
+                })
+            }
+        })
+    </script>
+</body>
+
+</html>

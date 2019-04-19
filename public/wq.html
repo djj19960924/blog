@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册css</title>
+    <!--分析；在body中设置背景，插入一个table 或者div ，分为三部分，三部分都浮动，按照百分比来分（或者拿尺子测下像素）
+    左边是p标签，右边是a标签嵌套p标签
+    中间是注册表单
+    首先把位置定好在中间位置；margin ;
+    -->
+    <style type="text/css">
+        body {
+            background-image: url("../img/bg.jpg");
+        }
+
+        /*设置所有元素不会被撑大 ,并且盒子的宽高是边框的宽高 设置margin=0，padding=0*/
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+        .main{
+            display: flex;
+        }
+
+        body>div {
+            /*最外层容器指定大小,边框，水平居中, */
+            width: 850px;
+            height: 400px;
+            background-color: white;
+            border: gray solid 8px;
+            margin: 60px auto;
+        }
+        .left {
+            /* float: left; */
+            width: 50%;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+
+        .first {
+            font-size: 20px;
+            color: orange;
+
+        }
+
+        .left p:last-child {
+            font-size: 20px;
+            color: gray;
+        }
+        table{
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top:0;
+            margin: auto
+        }
+
+        .mid {
+            font-size: 15px;
+            /* float: right; */
+            width: 50%;
+            position: relative;
+            
+        }
+
+        
+        .tr{
+            margin-bottom:10px 
+        }
+
+        .t-left {
+            /*文字靠左边*/
+            text-align: left;
+
+        }
+        /* 表单中的文本框，日期框，密码框使用属性选择器，宽256，高32，行高32，内边距上下6，左右12，
+        圆角4，边框：1 实线 颜色#a6a6a6，右浮动*/
+        input[type="text"],
+        input[type="date"],
+        input[type="password"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="radio"] {
+            padding-top: 6px;
+            padding-bottom: 6px;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 4px;
+            /*圆角*/
+            border: gray solid 1px;
+            margin-left: 30px;
+            /*指定左边距，调节左边距的距离*/
+        }
+        .right {
+            float: right;
+            width: 25%;
+        }
+
+        .right p {
+            font-size: 15px;
+            padding: 10px 10px 0px 0px;
+            float: right;
+            margin-left: 30px;
+        }
+
+        /*验证码*/
+        .check {
+            margin-left: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--最外层容器-->
+    <div class="main">
+        <!--左容器-->
+        <div class="left">
+           <img src="./images/1.jpg" alt="" style="width:50%;height:300px;">
+        </div>
+        <!--中容器  插入表格容器-->
+        <div class="mid">
+            <div class="table">
+                <!--表格容器中的table需要提交表单，使用form-->
+                <form action="#" name="register" method="get">
+                    <!--表格9行2列-->
+                    <table>
+                        <!--用户名，密码，邮箱姓名，手机号，性别，生日，验证码，提交-->
+                        <tr>
+                            <!--第一行-->
+                            <td class="t-left">
+                                <lable for="username">用户名</lable>
+                            </td>
+                            <td class="t-right"><input type="text" name="username" id="username" placeholder="请输入用户名"></td>
+                        </tr>
+                        <tr>
+                            <!--第2行-->
+                            <td class="t-left">
+                                <lable for="password">密码</lable>
+                            </td>
+                            <td class="t-right"><input type="password" name="password" id="password" placeholder="请输入密码">
+                            </td>
+                        </tr>
+                        <tr>
+                            <!--第一行-->
+                            <td class="t-left">
+                                <lable for="email">邮箱</lable>
+                            </td>
+                            <td class="t-right"><input type="email" name="email" id="email" placeholder="请输入邮箱"></td>
+                        </tr>
+                        <tr>
+                            <!--第一行-->
+                            <td class="t-left">
+                                <lable for="tel">手机号</lable>
+                            </td>
+                            <td class="t-right"><input type="tel" name="tel" id="tel" placeholder="请输入手机号"></td>
+                        </tr>
+                        <tr>
+                            <!--第一行-->
+                            <td class="t-left">性别</td>
+                            <td class="t-right">
+                                <input type="radio" name="gender" value="男">男
+                                <input type="radio" name="gender" value="女">女
+                            </td>
+                        </tr>
+                        <tr>
+                            <!--第一行-->
+                            <td class="t-left">生日</td>
+                            <td class="t-right"><input type="date" name="date"></td>
+                        </tr>
+                        
+                        <tr align="center">
+                            <!--第一行-->
+                            <td colspan="2">
+                                <button class="submit">提交表单</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+
+            </div>
+        </div>
+        
+    </div>
+
+</body>
+
+</html>
